@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-paper font-sans text-ink antialiased; }
+  ::selection { @apply bg-accent text-paper; }
+  a { @apply underline-offset-4; }
+  :focus-visible { @apply outline outline-2 outline-offset-4 outline-accent; }
+}
+
+@layer components {
+  .shell { @apply mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-12; }
+  .eyebrow { @apply font-mono text-[0.68rem] font-medium uppercase tracking-[0.14em] text-muted; }
+  .section-rule { @apply border-t border-rule; }
+  .text-link { @apply inline-flex items-center gap-1.5 font-medium text-ink transition-colors hover:text-accent; }
+  .system-flow { @apply grid gap-px overflow-hidden border border-rule bg-rule sm:grid-cols-4; }
+  .system-flow__step { @apply grid grid-cols-[1.8rem_1fr] gap-3 bg-paper p-5; }
+  .system-flow__index { @apply font-mono text-[0.65rem] text-accent; }
+  .system-flow__label { @apply font-mono text-[0.68rem] uppercase tracking-[0.08em] text-ink; }
+  .system-flow__detail { @apply mt-2 text-sm leading-6 text-muted; }
+  .system-flow--compact .system-flow__step { @apply p-4; }
+  .system-flow--compact .system-flow__detail { @apply text-xs leading-5; }
+}

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { profile } from '../data/profile';
+import { projects } from '../data/projects';
+import { experience } from '../data/experience';
+---
+<BaseLayout title="Kunal Anand — Backend & Applied AI Engineer" description="Portfolio of Kunal Anand, a backend and applied AI engineer.">
+  <section class="shell pb-20 pt-12 sm:pb-28 sm:pt-20">
+    <p class="eyebrow mb-7 text-accent">Backend & Applied AI Engineer · {profile.location}</p>
+    <h1 class="max-w-5xl text-5xl font-semibold leading-[1.03] tracking-[-0.045em] sm:text-7xl lg:text-8xl">Systems with <em class="font-medium not-italic text-accent">useful intelligence</em> and clear operational behavior.</h1>
+    <div class="mt-10 grid max-w-3xl gap-7 sm:grid-cols-[1fr_auto] sm:items-end"><p class="max-w-xl text-lg leading-8 text-muted">{profile.statement}</p><div class="flex gap-4"><a class="text-link no-underline" href={profile.github} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a><a class="text-link no-underline" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></div></div>
+    <a href="#work" class="mt-16 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted no-underline">Selected work <span aria-hidden="true">↓</span></a>
+  </section>
+
+  <section id="work" class="shell section-rule py-14 sm:py-20"><SectionHeading number="01" title="Selected work" detail="Three projects selected for verified evidence of backend and applied-AI work." />{projects.map((project) => <ProjectCard project={project} />)}<div class="border-t border-rule pt-6"><a class="text-link no-underline" href={profile.github} target="_blank" rel="noreferrer">View GitHub profile <span aria-hidden="true">↗</span></a></div></section>
+
+  <section class="shell section-rule grid gap-10 py-14 sm:grid-cols-[1fr_2fr] sm:py-20"><div><SectionHeading number="02" title="How I build" /></div><div class="grid gap-7"><div><p class="eyebrow mb-2 text-accent">Clear boundaries</p><p class="max-w-xl leading-7 text-muted">I favour explicit roles, API contracts, validation, and data ownership over behaviour that is implied or scattered across a system.</p></div><div><p class="eyebrow mb-2 text-accent">Observable behaviour</p><p class="max-w-xl leading-7 text-muted">Retrieval paths, agent runs, and operational workflows are easier to improve when their states, signals, and review points are visible.</p></div><div><p class="eyebrow mb-2 text-accent">Deliberate complexity</p><p class="max-w-xl leading-7 text-muted">Graph retrieval, model-assisted analysis, and cloud services earn their place when they make a system more useful or inspectable.</p></div><p class="border-t border-rule pt-6 font-mono text-xs leading-6 text-muted">CURRENT DIRECTION / Backend systems for applied AI, with particular interest in retrieval workflows, AI-agent observability, and cloud data services.</p></div></section>
+
+  <section class="shell section-rule py-14 sm:py-20"><SectionHeading number="03" title="Experience & education" />{experience.map((item) => <article class="grid gap-2 border-t border-rule py-6 sm:grid-cols-[10rem_1fr_2fr] sm:gap-6"><p class="eyebrow">{item.period}</p><div><h3 class="font-semibold">{item.role}</h3><p class="mt-1 text-sm text-muted">{item.organization}</p></div><p class="leading-7 text-muted">{item.summary}</p></article>)}</section>
+
+  <section id="about" class="shell section-rule grid gap-10 py-14 sm:grid-cols-[1fr_2fr] sm:py-20"><div><SectionHeading number="04" title="About" /></div><div><p class="max-w-2xl text-2xl leading-9 tracking-tight sm:text-3xl sm:leading-[1.35]">{profile.about}</p><p class="mt-7 max-w-xl leading-7 text-muted">I am most interested in the decisions beneath useful products: data boundaries, retrieval behaviour, API safeguards, and the trade-offs that make a system easier to operate.</p></div></section>
+
+  <section id="contact" class="shell section-rule py-14 sm:py-20"><p class="eyebrow mb-5 text-accent">05 / contact</p><h2 class="max-w-3xl text-4xl font-semibold tracking-tight sm:text-6xl">Open to conversations about backend and applied-AI engineering.</h2><div class="mt-9 flex flex-wrap gap-x-7 gap-y-4"><a class="text-link no-underline" href={`mailto:${profile.email}`}>{profile.email} <span aria-hidden="true">↗</span></a><a class="text-link no-underline" href={profile.github} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a><a class="text-link no-underline" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></div></section>
+</BaseLayout>

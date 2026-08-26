@@ -1,0 +1,15 @@
+---
+import type { Project } from '../data/projects';
+import SystemFlow from './SystemFlow.astro';
+interface Props { project: Project }
+const { project } = Astro.props;
+---
+<article class="group border-t border-rule py-9 sm:py-12">
+  <div class="grid gap-5 sm:grid-cols-[5rem_1fr_auto] sm:gap-7">
+  <p class="eyebrow text-accent">{project.number} / project</p>
+  <div><p class="eyebrow mb-3">{project.eyebrow}</p><h3 class="text-2xl font-semibold tracking-tight sm:text-3xl">{project.title}</h3><p class="mt-3 max-w-2xl text-base leading-7 text-muted">{project.summary}</p><p class="mt-4 font-mono text-xs leading-6 text-muted">{project.technologies.join(' · ')}</p></div>
+  <div class="flex gap-5 self-start sm:pt-8"><a class="text-link no-underline" href={project.github} target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a><a class="text-link no-underline" href={`/projects/${project.slug}`}>Case study <span aria-hidden="true">↗</span></a></div>
+  </div>
+  <div class="mt-7 sm:ml-20"><SystemFlow steps={project.flow} compact /></div>
+  {project.images?.[0] && <figure class="mt-5 overflow-hidden border border-rule bg-[#111827] sm:ml-20"><img class="max-h-[28rem] w-full object-contain object-left" src={project.images[0].src} alt={project.images[0].alt} loading="lazy" /><figcaption class="border-t border-rule bg-paper px-4 py-3 text-sm leading-6 text-muted">{project.images[0].caption}</figcaption></figure>}
+</article>

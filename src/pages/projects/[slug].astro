@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SystemFlow from '../../components/SystemFlow.astro';
+import { getProject, projects } from '../../data/projects';
+export function getStaticPaths() { return projects.map((project) => ({ params: { slug: project.slug } })); }
+const project = getProject(Astro.params.slug ?? '');
+if (!project) throw new Error('Project not found');
+---
+<BaseLayout title={`${project.title} — Kunal Anand`} description={project.summary}>
+  <article class="shell pb-10 pt-8 sm:pb-16 sm:pt-14">
+    <a class="text-link font-mono text-xs uppercase tracking-widest no-underline text-muted" href="/#work"><span aria-hidden="true">←</span> All work</a>
+    <header class="mt-12 border-b border-rule pb-12"><p class="eyebrow text-accent">{project.number} / {project.eyebrow}</p><h1 class="mt-5 max-w-4xl text-5xl font-semibold leading-[1.05] tracking-[-0.04em] sm:text-7xl">{project.title}</h1><p class="mt-7 max-w-2xl text-xl leading-8 text-muted">{project.summary}</p><div class="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4"><a class="text-link no-underline" href={project.github} target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a><p class="font-mono text-xs text-muted">{project.technologies.join(' · ')}</p></div></header>
+
+    <section class="grid gap-10 py-12 sm:grid-cols-[11rem_1fr] sm:py-16"><p class="eyebrow text-accent">What I built</p><div><p class="max-w-3xl text-2xl leading-9 tracking-tight">{project.problem}</p><p class="mt-6 max-w-2xl leading-8 text-muted">{project.contribution}</p></div></section>
+
+    <section class="section-rule grid gap-8 py-10 sm:grid-cols-[11rem_1fr] sm:py-14"><p class="eyebrow text-accent">System flow</p><div><SystemFlow steps={project.flow} /><p class="mt-4 font-mono text-xs leading-6 text-muted">The diagram describes the verified system path; it is not a claim about scale, latency, or production usage.</p></div></section>
+
+    {project.images && <section class="section-rule grid gap-8 py-10 sm:grid-cols-[11rem_1fr] sm:py-14"><p class="eyebrow text-accent">Interface evidence</p><div class="space-y-7">{project.images.map((image) => <figure class="overflow-hidden border border-rule"><img class="max-h-[48rem] w-full bg-[#111827] object-contain" src={image.src} alt={image.alt} loading="lazy" /><figcaption class="border-t border-rule px-4 py-3 text-sm leading-6 text-muted">{image.caption}</figcaption></figure>)}</div></section>}
+
+    <section class="section-rule grid gap-8 py-10 sm:grid-cols-[11rem_1fr] sm:py-14"><p class="eyebrow text-accent">Architecture notes</p><ol class="max-w-2xl space-y-5">{project.architecture.map((item, index) => <li class="grid grid-cols-[2rem_1fr] gap-3 leading-7 text-muted"><span class="font-mono text-xs text-accent">0{index + 1}</span>{item}</li>)}</ol></section>
+
+    <section class="section-rule grid gap-8 py-10 sm:grid-cols-[11rem_1fr] sm:py-14"><p class="eyebrow text-accent">Implementation</p><ul class="max-w-2xl space-y-4 leading-7 text-muted">{project.engineering.map((item) => <li class="border-l border-accent pl-4">{item}</li>)}</ul></section>
+
+    <section class="section-rule grid gap-8 py-10 sm:grid-cols-[11rem_1fr] sm:py-14"><p class="eyebrow text-accent">Decisions & limits</p><div class="max-w-2xl space-y-6"><ul class="space-y-4 leading-7 text-muted">{project.decisions.map((item) => <li>{item}</li>)}</ul><p class="border-t border-rule pt-5 text-sm leading-6 text-muted">{project.challenges[0]}</p></div></section>
+
+    <section class="section-rule grid gap-8 py-10 sm:grid-cols-[11rem_1fr] sm:py-14"><p class="eyebrow text-accent">Outcome</p><div><p class="max-w-2xl text-xl leading-8">{project.outcome}</p><a class="text-link mt-6 no-underline" href={project.github} target="_blank" rel="noreferrer">View repository <span aria-hidden="true">↗</span></a></div></section>
+  </article>
+</BaseLayout>
