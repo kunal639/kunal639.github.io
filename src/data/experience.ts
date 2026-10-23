@@ -1,15 +1,15 @@
 export const experience = [
   {
+    period: 'Jul 2026 - Sep 2026',
+    role: 'Backend Engineering Intern',
+    organization: 'FlyRank AI',
+    summary: 'Built a multi-tenant FastAPI and PostgreSQL lead-capture platform with tenant-scoped APIs, public-endpoint protections, transactional outbox processing, dashboard APIs, and automated tests.',
+  },
+  {
     period: 'Apr 2026 - May 2026',
     role: 'Backend Intern',
     organization: 'Startly Innovations Pvt. Ltd.',
     summary: 'Built Node.js, Express.js, and MongoDB APIs for a role-based registration platform, including administration, validation, and abuse-prevention workflows.',
-  },
-  {
-    period: 'Jun 2025',
-    role: 'Data Science Intern',
-    organization: 'Polytropic Services Pvt. Ltd.',
-    summary: 'Built Python data-processing workflows with Pandas and SQL for structured ingestion, analysis, and automated operational reporting.',
   },
   {
     period: '2023 - 2027',
