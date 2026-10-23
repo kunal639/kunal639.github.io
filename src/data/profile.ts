@@ -3,7 +3,7 @@ export const profile = {
   title: 'Backend & Applied AI Engineer',
   email: 'kunal.anand639@gmail.com',
   github: 'https://github.com/kunal639',
-  linkedin: 'https://www.linkedin.com/in/kunal-anand-entertainingwar110',
+  linkedin: 'https://www.linkedin.com/in/kunal-anand-builder/',
   resume: '/Kunal_Anand_Resume.pdf',
   location: 'Bhagalpur, Bihar, India',
   statement: 'I build backend systems and applied AI workflows with an emphasis on useful interfaces, dependable data flows, and clear operational behavior.',
