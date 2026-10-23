@@ -11,5 +11,6 @@ const { project } = Astro.props;
   <div class="flex flex-wrap gap-x-5 gap-y-3 self-start sm:pt-8"><a class="text-link no-underline" href={project.github} target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a>{project.article && <a class="text-link no-underline" href={project.article} target="_blank" rel="noreferrer">Build article <span aria-hidden="true">↗</span></a>}<a class="text-link no-underline" href={`/projects/${project.slug}`}>Case study <span aria-hidden="true">↗</span></a></div>
   </div>
   <div class="mt-7 sm:ml-20"><SystemFlow steps={project.flow} compact /></div>
+  <p class="mt-5 sm:ml-20 font-mono text-xs leading-6 text-muted">EVIDENCE / {project.evidence[0].label}</p>
   {project.images?.[0] && <figure class="mt-5 overflow-hidden border border-rule bg-[#111827] sm:ml-20"><img class="max-h-[28rem] w-full object-contain object-left" src={project.images[0].src} alt={project.images[0].alt} loading="lazy" /><figcaption class="border-t border-rule bg-paper px-4 py-3 text-sm leading-6 text-muted">{project.images[0].caption}</figcaption></figure>}
 </article>

@@ -17,6 +17,8 @@ if (!project) throw new Error('Project not found');
 
     {project.images && <section class="section-rule grid gap-8 py-10 sm:grid-cols-[11rem_1fr] sm:py-14"><p class="eyebrow text-accent">Interface evidence</p><div class="space-y-7">{project.images.map((image) => <figure class="overflow-hidden border border-rule"><img class="max-h-[48rem] w-full bg-[#111827] object-contain" src={image.src} alt={image.alt} loading="lazy" /><figcaption class="border-t border-rule px-4 py-3 text-sm leading-6 text-muted">{image.caption}</figcaption></figure>)}</div></section>}
 
+    <section class="section-rule grid gap-8 py-10 sm:grid-cols-[11rem_1fr] sm:py-14"><p class="eyebrow text-accent">Source evidence</p><ul class="max-w-2xl space-y-5">{project.evidence.map((item) => <li class="border-l border-accent pl-4"><a class="text-link no-underline" href={item.url} target="_blank" rel="noreferrer">{item.label} <span aria-hidden="true">↗</span></a><p class="mt-2 leading-7 text-muted">{item.detail}</p></li>)}</ul></section>
+
     <section class="section-rule grid gap-8 py-10 sm:grid-cols-[11rem_1fr] sm:py-14"><p class="eyebrow text-accent">Architecture notes</p><ol class="max-w-2xl space-y-5">{project.architecture.map((item, index) => <li class="grid grid-cols-[2rem_1fr] gap-3 leading-7 text-muted"><span class="font-mono text-xs text-accent">0{index + 1}</span>{item}</li>)}</ol></section>
 
     <section class="section-rule grid gap-8 py-10 sm:grid-cols-[11rem_1fr] sm:py-14"><p class="eyebrow text-accent">Implementation</p><ul class="max-w-2xl space-y-4 leading-7 text-muted">{project.engineering.map((item) => <li class="border-l border-accent pl-4">{item}</li>)}</ul></section>

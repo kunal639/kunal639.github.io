@@ -1,4 +1,4 @@
-export type Project = { slug: string; number: string; title: string; eyebrow: string; problem: string; summary: string; technologies: string[]; github: string; article?: string; contribution: string; outcome: string; flow: { label: string; detail: string }[]; architecture: string[]; engineering: string[]; decisions: string[]; challenges: string[]; };
+export type Project = { slug: string; number: string; title: string; eyebrow: string; problem: string; summary: string; technologies: string[]; github: string; article?: string; contribution: string; outcome: string; flow: { label: string; detail: string }[]; architecture: string[]; engineering: string[]; decisions: string[]; challenges: string[]; images?: { src: string; alt: string; caption: string }[]; evidence: { label: string; detail: string; url: string }[]; };
 
 export const projects: Project[] = [
   {
@@ -13,6 +13,7 @@ export const projects: Project[] = [
     architecture: ['The repository separates parsers, normalizers, detectors, intelligence, models, reports, and telemetry replay.', 'Deterministic rules identify risky patterns rather than making the detection engine a black box.', 'The platform estimates operational waste and cost attribution, and flags security/compliance violations.', 'The project includes architecture decisions and a sample audit-report artifact.'],
     engineering: ['Designed the system around reproducibility: the same telemetry input produces the same diagnosis and output.', 'Pairs deterministic detection with Gemini-powered root-cause context rather than using model output as the detector.', 'Uses a human approval step before recommendations are surfaced.'],
     decisions: ['Deterministic detection provides an explainable baseline for governance and audit use cases.', 'The design records assumptions and MVP trade-offs in an architecture decision record.'], challenges: ['No production scale, latency, or accuracy metric is claimed here.'],
+    evidence: [{ label: 'Architecture and audit artifacts', detail: 'The repository includes system diagrams, architecture decisions, telemetry replay, and a sample audit report.', url: 'https://github.com/kunal639/ObserverModel' }],
   },
   {
     slug: 'flyrank-widget-platform', number: '02', title: 'FlyRank Widget Platform', eyebrow: 'Backend engineering internship',
@@ -25,6 +26,7 @@ export const projects: Project[] = [
     architecture: ['The platform separates a public widget surface from tenant dashboard operations.', 'Public submissions are protected by CORS/origin validation, honeypot checks, rate limits, payload limits, and idempotency.', 'The data transaction includes the submission, its field values, and a notification outbox.', 'A background worker processes notification work and recovery paths.'],
     engineering: ['Implemented tenant-scoped API behaviour and dashboard endpoints.', 'Built transactional outbox handling with retries and failure recovery for notifications.', 'Added automated tests and versioned database migrations.'],
     decisions: ['Atomic persistence with an outbox avoids treating a database write and notification dispatch as one unreliable step.', 'Public-widget controls are layered because the endpoint receives unauthenticated internet traffic.'], challenges: ['The portfolio does not claim hosted uptime, throughput, or external customer adoption.'],
+    evidence: [{ label: 'API, migration, test, and build evidence', detail: 'The repository documents the API, schema migrations, automated tests, build log, and operational evidence.', url: 'https://github.com/kunal639/flyrank-capstone-widget-platform' }],
   },
   {
     slug: 'secure-gemini-journal', number: '03', title: 'Secure Gemini Journal', eyebrow: 'Private AI application',
@@ -37,6 +39,7 @@ export const projects: Project[] = [
     architecture: ['Firebase Authentication establishes identity; the backend separately enforces authorisation.', 'Firestore stores multi-user journal data with conversation ownership and isolation.', 'Only REFLECT invokes Gemini and retrieves relevant historical context.', 'Security design addresses unauthorised access, prompt injection, context poisoning, and API abuse.'],
     engineering: ['Implemented server-authoritative message persistence and backend-enforced conversation ownership.', 'Designed a selective response pipeline instead of using Gemini for every entry.', 'Added safety checks before AI reflection and context retrieval.'],
     decisions: ['Selective invocation reduces unnecessary model use and limits irrelevant historical context.', 'Authentication and authorisation remain distinct checks so user identity alone does not grant data access.'], challenges: ['No claim is made about clinical use, model safety guarantees, or deployment scale.'],
+    evidence: [{ label: 'Security design and implementation', detail: 'The repository and build article document the ownership model, service boundaries, and AI request path.', url: 'https://github.com/kunal639/Secure-Gemini_journal' }],
   },
   {
     slug: 'multilingual-rag-chatbot', number: '04', title: 'Multilingual RAG Support Platform', eyebrow: 'Human-in-the-loop RAG',
@@ -49,6 +52,7 @@ export const projects: Project[] = [
     architecture: ['The repository describes a React/Vite frontend, FastAPI backend, and PostgreSQL with pgvector.', 'Each tenant has isolated knowledge bases, FAQs, widgets, and chat history.', 'Analytics records interactions, retrieved FAQs, similarity score, response time, and escalation reason.', 'The platform uses a guardrails layer before retrieval and a queue for human escalation.'],
     engineering: ['Implemented and integrated the knowledge-grounded retrieval workflow into the chatbot backend.', 'Led team work on workspace-specific knowledge bases and embeddable chat widgets.', 'Made confidence-based escalation a primary path rather than a fallback.'],
     decisions: ['The system chooses escalation instead of fabricating an answer when no reliable match exists.', 'Public widgets use API-key authentication separately from authenticated dashboard users.'], challenges: ['The portfolio does not claim retrieval-quality metrics, language coverage counts, or production usage.'],
+    evidence: [{ label: 'Implementation and request-path documentation', detail: 'The open-source project documents the multi-tenant isolation model, guardrails, retrieval flow, and escalation path.', url: 'https://github.com/kunal639/Multi-Lingual-RAG-Chatbot-With-Human-In-The-Loop-Final' }],
   },
 ];
 
