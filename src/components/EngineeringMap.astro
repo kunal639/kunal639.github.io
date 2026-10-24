@@ -1,0 +1,15 @@
+---
+const items = [
+  { number: '01', label: 'Observe', detail: 'Agent telemetry and runtime signals' },
+  { number: '02', label: 'Protect', detail: 'Boundaries, validation, and ownership' },
+  { number: '03', label: 'Retrieve', detail: 'Grounded context and escalation paths' },
+  { number: '04', label: 'Operate', detail: 'Audit artifacts and recovery behaviour' },
+];
+---
+<aside class="engineering-map" aria-label="Engineering themes represented in selected work">
+  <div class="engineering-map__header"><p class="eyebrow text-accent">Selected systems</p><p class="font-mono text-[0.65rem] uppercase tracking-[0.1em] text-muted">Evidence map / 04</p></div>
+  <ol class="engineering-map__list">
+    {items.map((item) => <li class="engineering-map__item"><span class="engineering-map__number">{item.number}</span><div><p class="engineering-map__label">{item.label}</p><p class="engineering-map__detail">{item.detail}</p></div></li>)}
+  </ol>
+  <p class="engineering-map__note">The portfolio is organised around system behaviour, not a technology list.</p>
+</aside>
